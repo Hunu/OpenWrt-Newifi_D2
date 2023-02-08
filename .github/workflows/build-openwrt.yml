@@ -65,14 +65,17 @@ jobs:
 
     - name: add smartdns source
       run: |
+        echo "====0===="
+        ls /
         echo "====1===="
         ls /workdir
         echo "====2===="
         ls /workdir/openwrt
         echo "====3===="
         ls /workdir/openwrt
-        git clone -b lede https://github.com/pymumu/luci-app-smartdns.git /workdir/openwrt/package/lean/luci-app-smartdns
-
+        cd openwrt
+        git clone -b lede https://github.com/pymumu/luci-app-smartdns.git package/lean/luci-app-smartdns
+        
     - name: Load custom feeds
       run: |
         [ -e $FEEDS_CONF ] && mv $FEEDS_CONF openwrt/feeds.conf.default
